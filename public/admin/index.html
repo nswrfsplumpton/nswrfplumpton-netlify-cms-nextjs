@@ -52,11 +52,11 @@
         render: function() {
           var entryData = this.props.entry;
 
-          var layoutData = entry.getIn(["data", "layout"]);
-          var titleData = entry.getIn(["data", "title"]);
-          var dataData = entry.getIn(["data", "date"]);
-          var thumbnailData = entry.getIn(["data", "thumbnail"]);
-          var bodyData = entry.getIn(["data", "body"]);
+          var layoutData = entryData.getIn(["data", "layout"]);
+          var titleData = entryData.getIn(["data", "title"]);
+          var dataData = entryData.getIn(["data", "date"]);
+          var thumbnailData = entryData.getIn(["data", "thumbnail"]);
+          var bodyData = entryData.getIn(["data", "body"]);
 
           console.log('NewsPreview', {
             layoutData,
