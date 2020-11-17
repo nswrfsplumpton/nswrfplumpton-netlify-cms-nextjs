@@ -10,24 +10,58 @@
     <!-- Include the script that builds the page and powers Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
     <script>
+
+      /**
+       * PostPreview
+       */
       CMS.registerPreviewStyle(
         "https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap"
       );
       CMS.registerPreviewStyle("/styles/content.module.css");
+
       var PostPreview = createClass({
         render: function () {
-          var entry = this.props.entry;
-          var date = entry.getIn(["data", "date"]);
+
+          // Entry Data
+          var entry = this.props.entry; // Immutable collection containing the entry data
+          var date = entry.getIn(["data", "date"]); // entry data for date
+
+          // Widgets
+          var widgetForBody = this.props.widgetFor("body"); // Returns the appropriate widget preview component for a given field
+          
+          // Image Assets
+          // var image = entry.getIn(['data', 'image']);
+          // var bgImage = this.props.getAsset(image); // Returns the correct filePath or in-memory preview for uploaded images
+
+          // React Components for Preview
           return h(
             "div",
             { className: "content" },
             h("h1", {}, entry.getIn(["data", "title"])),
             h("time", {}, entry.getIn(["data", "date"])),
-            h("div", {}, this.props.widgetFor("body"))
+            h("div", {}, widgetForBody)
           );
         },
       });
       CMS.registerPreviewTemplate("posts", PostPreview);
+
+      /**
+       * NewsPreview
+       */
+      var NewsPreview = createClass({
+        render: function() {
+          var entryData = this.props.entry;
+
+          console.log('NewsPreview', entryData);
+
+          return h(
+            "div",
+            { className: "content" },
+            h("div", {}, "foobar")
+          );
+        }
+      });
+      CMS.registerPreviewTemplate("news", NewsPreview);
     </script>
   </body>
 </html>
