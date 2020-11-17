@@ -8,10 +8,11 @@ type Props = {
 export default function Index({
   title
 }: Props) {
-  return ({ children: content }) => {
+  return ({ children }) => {
     return (
       <Layout>
-        <div>{{title}}</div>
+        <div>{title}</div>
+        <main>{children}</main>
       </Layout>
     );
   };
