@@ -52,7 +52,19 @@
         render: function() {
           var entryData = this.props.entry;
 
-          console.log('NewsPreview', entryData);
+          var layoutData = entry.getIn(["data", "layout"]);
+          var titleData = entry.getIn(["data", "title"]);
+          var dataData = entry.getIn(["data", "date"]);
+          var thumbnailData = entry.getIn(["data", "thumbnail"]);
+          var bodyData = entry.getIn(["data", "body"]);
+
+          console.log('NewsPreview', {
+            layoutData,
+            titleData,
+            dataData,
+            thumbnailData,
+            bodyData
+          });
 
           return h(
             "div",
